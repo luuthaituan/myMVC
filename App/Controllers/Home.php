@@ -3,18 +3,14 @@
 namespace App\Controllers;
 use Core\View;
 
-/**
+/*
  * Home controller
- *
- * PHP version 5.4
  */
 class Home
 {
 
     /*
      * Show the index page
-     *
-     * @return void
      */
     public function index()
     {
