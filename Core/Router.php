@@ -7,7 +7,7 @@ class Router
 {
 
     /*
-     Associative array of routes (the routing table)
+    Associative array of routes (the routing table)
      */
     protected $routes = [];
 
@@ -17,9 +17,9 @@ class Router
     protected $params = [];
 
     /*
-      Add a route to the routing table
-    string $route  The route URL
-    $params Parameters (controller, action, etc.)
+    Add a route to the routing table
+string $route  The route URL
+ $params Parameters (controller, action, etc.)
      */
     public function add($route, $params = [])
     {
@@ -39,7 +39,7 @@ class Router
     }
 
     /*
-      Get all the routes from the routing table
+ Get all the routes from the routing table
      */
     public function getRoutes()
     {
@@ -47,9 +47,9 @@ class Router
     }
 
     /*
-     Match the route to the routes in the routing table, setting the $params  property if a route is found.
-     string $url The route URL
-     boolean  true if a match found, false otherwise
+ Match the route to the routes in the routing table, setting the $params property if a route is found.
+ string $url The route URL
+return boolean  true if a match found, false otherwise
      */
     public function match($url)
     {
@@ -71,20 +71,16 @@ class Router
     }
 
     /*
-     Get the currently matched parameters
+      Get the currently matched parameters
      */
     public function getParams()
     {
         return $this->params;
     }
 
-    /**
-     * Dispatch the route, creating the controller object and running the
-     * action method
-     *
-     * @param string $url The route URL
-     *
-     * @return void
+    /*
+ Dispatch the route, creating the controller object and running the action method
+ string $url The route URL
      */
     public function dispatch($url)
     {
@@ -116,26 +112,18 @@ class Router
         }
     }
 
-    /**
-     * Convert the string with hyphens to StudlyCaps,
-     * e.g. post-authors => PostAuthors
-     *
-     * @param string $string The string to convert
-     *
-     * @return string
+    /*
+Convert the string with hyphens to StudlyCaps, e.g. post-authors => PostAuthors
+ string $string The string to convert
      */
     protected function convertToStudlyCaps($string)
     {
         return str_replace(' ', '', ucwords(str_replace('-', ' ', $string)));
     }
 
-    /**
-     * Convert the string with hyphens to camelCase,
-     * e.g. add-new => addNew
-     *
-     * @param string $string The string to convert
-     *
-     * @return string
+    /*
+     Convert the string with hyphens to camelCase,e.g. add-new => addNew
+     string $string The string to convert
      */
     protected function convertToCamelCase($string)
     {
@@ -180,7 +168,11 @@ class Router
         return $url;
     }
 
-    protected function getNamespace() //Get the namespace for the controller class. The namespace defined in the route parameters is added if present.
+    /*
+Get the namespace for the controller class. The namespace defined in the route parameters is added if present.
+string The request URL
+     */
+    protected function getNamespace()
     {
         $namespace = 'App\Controllers\\';
 

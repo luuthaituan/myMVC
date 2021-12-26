@@ -7,7 +7,7 @@ class Users extends \Core\Controller
 {
 
     /*
-      Before filter
+     Before filter
      */
     protected function before()
     {

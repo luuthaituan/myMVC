@@ -8,30 +8,34 @@ class View
 
     /*
      Render a view file
+ $view  The view file
+ $args  Associative array of data to display in the view (optional)
      */
     public static function render($view, $args = [])
     {
-        extract($args, EXTR_SKIP); //extract the data as an individual variable
+        extract($args, EXTR_SKIP);
 
-        $file = dirname(__DIR__) . "/App/Views/$view";  // relative to Core directory
+        $file = "../App/Views/$view";  // relative to Core directory
 
         if (is_readable($file)) {
             require $file;
         } else {
-            throw new \Exception("$file not found");
+            echo "$file not found";
         }
     }
 
     /*
-      Render a view template using Twig
+     Render a view template using Twig
+ string $template  The template file
+ array $args  Associative array of data to display in the view (optional)
      */
     public static function renderTemplate($template, $args = [])
     {
         static $twig = null;
 
         if ($twig === null) {
-            $loader = new \Twig\Loader\FilesystemLoader(dirname(__DIR__) . '/App/Views');
-            $twig = new \Twig\Environment($loader);
+            $loader = new \Twig_Loader_Filesystem('../App/Views');
+            $twig = new \Twig_Environment($loader);
         }
 
         echo $twig->render($template, $args);
